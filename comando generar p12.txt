@@ -1,5 +1,0 @@
-openssl pkcs12 -export -in llave_publica.cer -inkey llave_key.key -out nombre_del_nuevo.p12
-
-openssl pkcs12 -export -in COCPDPOWERRADEV.cer -inkey COCPDPOWERRADEV.key -out COCPDPOWERRADEV.p12
-
-openssl pkcs12 -export -in COCPDPOWERRAUAT.cer -inkey COCPDPOWERRAUAT.key -out COCPDPOWERRAUAT.p12

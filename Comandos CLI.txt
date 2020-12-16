@@ -1,0 +1,87 @@
+#----------------------------------------------------------
+#Unable to connect to Datapower using network services: WebGUI or ssh
+https://www.ibm.com/support/pages/unable-connect-datapower-using-network-services-webgui-or-ssh
+
+# Primermos pasos por la consola CMD verificar ipconfig
+# segundo realizar las interfaces por primera vez con DHCP para verificar que no esten siendo usadas
+# Configuracion Terminal
+idg# co
+# Configuracion interfaces all
+idg# startup
+
+idg# admin-state enabled
+
+
+# configuracion interfaz grafica
+idg# web-mgmt
+# muestra las interfaces y si estan activas
+idg# show network-interface
+# muestra en el acceso remoto IP de la interface (no puede ser 0.0.0.0 tiene que sera la ip de la interface
+idg# show ssh
+# muestra la interfaz grafica
+idg# show web-mgmt
+# mostrar interfaces 
+idg# show int
+# Guardar Informacion
+idg# write mem
+# salir
+idg# exit
+# Reiniciar maquina
+idg# shutdown halt
+#---
+#Privilegios usuarios UserGroup
+*/default/*Acces=r
+*/nombre_dominio/*?Acces=rwadx
+
+
+
+
+#----------------------------------------------------------
+#Configurar Interfaz Grafica 
+idg# show int
+# verificar la et0 y setearla en la la interfaz
+# web-mgmt <ip to listen on or 0.0.0.0 for all> <port to use default is 9090>
+idg# web-mgmt 192.168.0.34 9090
+# verificar la et0 y setearla en el ssh
+# ssh <ip to listen on or 0.0.0.0 for all> <port to use default is 22>
+idg# ssh 192.168.0.34 22
+idg# write mem
+idg# exit
+#-------------------------------
+---------------------------
+# Quitar el timeout Por interfaz web 
+ network
+ managment
+ webManagment Service	
+ idle timeout =0
+
+#---
+# Pasos por primera vez Ejemplo
+Login: admin
+Password:admin
+Press any key to continue.
+Enable Secure Backup mode?:y
+Confirme Secure Backup mode?:y
+Enable Common Criteria Compatibility mode?:n
+Please enter the new password: sebas1234
+Please re-enter the new password to confirm: sebas1234
+Do you want to run the install wizard? y
+Do you want to configure network interfaces? y
+Do you have this information?:y
+Do you want to configure the eth0 interface?y
+Do you want to enable DHCP:Y
+#LAS OTRAS 3 AUTOMATICO REPETIR-------------------------------
+Do you want to configure network service? y
+Do you want to configure DNS? n
+do you want to defne a unique system identifer for all applicance:y
+Eneter a unique system identifier:datapower
+Do you want to configure remote magnament acces? y
+Do you have this information ?y
+Do you want to enable SSH?n
+Do you want to enable telnet?n
+Do you want to enable webgui?y
+enter the local IP adress [0 for all]:0
+Enter the port number:9090
+Do you want to confire a user account that can reset ?n
+Do you want to confire the RAID array ?n
+Do you want to save the current configuration?y

@@ -1,0 +1,31 @@
+docker run -it -v $PWD/config:/drouter/config -v $PWD/local:/drouter/local -e DATAPOWER_ACCEPT_LICENSE=true -e DATAPOWER_INTERACTIVE=true -p 9090:9090 -p 9022:22 -p 5554:5554 -p 8000-8010:8000-8010 --name idg ibmcom/datapower
+
+
+docker run -it -v $PWD/config:/drouter/config -v $PWD/local:/drouter/local -e DATAPOWER_ACCEPT_LICENSE=true -e DATAPOWER_INTERACTIVE=true -p 9090:9090 --name idg ibmcom/datapower
+
+docker run -it -e DATAPOWER_ACCEPT_LICENSE=true -e DATAPOWER_INTERACTIVE=true -e DATAPOWER_WORKER_THREADS=4  -p 9090:9090 -p 9022:22 -p 5554:5554 -p 8000-8010:8000-8010  --name idg ibmcom/datapower
+
+docker run -it -e DATAPOWER_ACCEPT_LICENSE=true -e DATAPOWER_INTERACTIVE=true  -p 9090:9090 --name idg ibmcom/datapower
+
+docker run --rm idg ibmcom/datapower
+
+docker run -it -e DATAPOWER_ACCEPT_LICENSE=true -e DATAPOWER_INTERACTIVE=true  -p 9090:9090 --name idsg ibmcom/datapower
+
+
+docker run -it -e DATAPOWER_ACCEPT_LICENSE=true -e DATAPOWER_INTERACTIVE=true ibmcom/datapower
+
+
+configure; web-mgmt 0 9090 9090;
+
+
+idga
+idsg
+idg
+
+
+
+
+
+-------
+cd ..
+cd D:\
